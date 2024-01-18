@@ -1,7 +1,7 @@
-import {atom} from 'jotai';
+import { atom } from "jotai";
 
-export const countAtom = atom(0);
-
-export const doubleAtom = atom((get) => get(countAtom) * 2);
-
-export const evenOddAtom = atom((get) => get(countAtom) % 2 === 0 ? `${get(countAtom)} is odd.` : `${get(countAtom)} is even.`);
+export const listAtom = atom<number[]>([]);
+export const filteredListAtom = atom((get) => {
+  const list = get(listAtom);
+  return list.filter((num) => num % 2 === 0);
+});
